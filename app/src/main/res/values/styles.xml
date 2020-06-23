@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/toolbarColor</item>
+        <item name="colorPrimaryDark">@color/toolbarColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="progressBarStyle" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:colorPrimary">@color/toolbarTitleColor</item>
+        <item name="android:colorAccent">@color/toolbarTitleColor</item>
+        <item name="android:colorPrimaryDark">@color/toolbarTitleColor</item>
+    </style>
+
+    <style name="AppTheme.YellowAccent">
+        <item name="colorAccent">@color/toolbarTitleColor</item>
+    </style>
+
+    <style name="MyAppBarLayoutTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlHighlight">@color/toolbarTitleColor</item>
+    </style>
+
+    <style name="ImageViewRounden" parent="">
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+</resources>

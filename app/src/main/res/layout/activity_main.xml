@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="adapter"
+            type="mvp.movies.app.ui.movies.adapter.MainAdapter" />
+
+        <variable
+            name="progressVisibility"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.movies.MoviesActivity">
+
+        <RelativeLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/mainMoviesToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:theme="@style/MyAppBarLayoutTheme"
+                app:menu="@null"
+                app:navigationIcon="@drawable/ic_menu_24px" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/dancing_script_bold"
+                android:text="@string/movies"
+                android:textColor="@color/toolbarTitleColor"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:theme="@style/AppTheme.YellowAccent"
+            android:visibility="@{safeUnbox(progressVisibility)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movies"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:fadeScrollbars="false"
+            android:padding="6dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:adapter="@{adapter}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

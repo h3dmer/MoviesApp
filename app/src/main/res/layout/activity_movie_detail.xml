@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="mvp.movies.app.ui.moviedetails.MovieDetailContract.Presenter" />
+
+        <variable
+            name="movie"
+            type="mvp.movies.app.api.dto.DiscoverResults" />
+
+        <variable
+            name="constants"
+            type="mvp.movies.app.util.Constants" />
+
+        <variable
+            name="posterUrl"
+            type="String" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:descendantFocusability="blocksDescendants"
+            tools:context=".ui.moviedetails.MovieDetailActivity">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_round_arrow_back_24"
+                android:onClick="@{() -> presenter.pressBack()}"
+                app:iconTint="@color/toolbarTitleColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="620dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/rounden_top_corners"
+                android:backgroundTint="@color/toolbarTitleColor"
+                app:cardCornerRadius="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/image_card_container">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{movie.title}"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Sample text" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/movie_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/poppins"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:convertDate="@{movie.releaseDate}"
+                    app:layout_constraintTop_toBottomOf="@id/movie_title"
+                    tools:text="Added: 24.05.2020" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/movie_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="48dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@{movie.overview}"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/movie_date"
+                    tools:text="Sample text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/image_card_container"
+                android:layout_width="210dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="center"
+                    app:imageUrl="@{posterUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="#000000"
+                    tools:src="@drawable/abc_vector_test" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

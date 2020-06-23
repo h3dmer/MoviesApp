@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="movie"
+            type="mvp.movies.app.api.dto.DiscoverResults" />
+
+        <variable
+            name="posterUrl"
+            type="String" />
+    </data>
+
+<!--    <com.skydoves.transformationlayout.TransformationLayout-->
+<!--        android:id="@+id/transformationLayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:transformation_duration="600">-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:onClick="@{clickListener}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/posterImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="center"
+                    android:adjustViewBounds="true"
+                    app:imageUrl="@{posterUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/abc_vector_test" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/gradient_bottom_to_top"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:maxLines="2"
+                    android:text="@{movie.title}"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/posterImage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Countdown" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+<!--    </com.skydoves.transformationlayout.TransformationLayout>-->
+
+</layout>
